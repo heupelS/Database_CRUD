@@ -8,9 +8,19 @@ def read_txt_file(datapath):
     dataframe = pd.DataFrame(dataframe)
     return dataframe
 
+def read_xlsx_file(datapath):
+    dataframe = pd.read_excel(datapath)
+    dataframe = pd.DataFrame(dataframe)
+    return dataframe
+
+#%% Merge Dataframe
+
+def merge_dfs(df1,df2):
+    return pd.merge(df1,df2, left_on='Journal', right_on='Source title', how='left')
+
 #%% write original data
-def write_data(data):
-    data.to_excel("Data/literature_review.xlsx")
+def write_data(data, name):
+    data.to_excel(f"Data/{name}.xlsx")
 
 #%% plotting functions
 
@@ -21,9 +31,12 @@ def plot_yearly_output(data):
 #%%
 if __name__ == "__main__":
     # Hier liegen die Daten
-    original_data = "Data/Literature-data_TU-Darmstadt.txt"
+    original_data_path = "Data/Literature-data_TU-Darmstadt.txt"
+    external_data_path = "Data/Impact-Factor-Ratings.xlsx"
 
     #Import data
-    data = read_txt_file(original_data)
+    data = read_txt_file(original_data_path)
+    external_data= read_xlsx_file(external_data_path)
+
     
 # %%
