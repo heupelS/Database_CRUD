@@ -10,7 +10,7 @@ def read_txt_file(datapath):
 
 #%% write original data
 def write_data(data):
-    data.to_excel("literature_review.xlsx")
+    data.to_excel("Data/literature_review.xlsx")
 
 #%% plotting functions
 
