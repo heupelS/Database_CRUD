@@ -1,0 +1,18 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+    <input name="text">
+    <input type="submit">
+</form>
+<div>
+    <h2>Ergebnisse</h2>
+    <div>
+        {% for i in list %}
+                <p>{{ i }}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
