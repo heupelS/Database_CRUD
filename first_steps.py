@@ -17,6 +17,14 @@ def read_xlsx_file(datapath):
     dataframe = pd.DataFrame(dataframe)
     return dataframe
 
+
+#%% Cleaning
+def clean_data():
+    original_data['Journal'] = original_data['Journal'].apply(str.upper)
+    external_data['Title'] = external_data['Title'].astype(str)
+    external_data['Title'] = external_data['Title'].apply(str.upper)
+
+
 #%% Merge Dataframe
 
 def merge_dfs(df1,df2):
@@ -39,7 +47,7 @@ if __name__ == "__main__":
     external_data_path = "Data/scimagojr-journal-2021.csv"
 
     #Import data
-    data = read_txt_file(original_data_path)
+    original_data = read_txt_file(original_data_path)
     external_data= read_csv_file(external_data_path)
 
     
