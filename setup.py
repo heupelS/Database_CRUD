@@ -3,21 +3,22 @@ import os
 from flask import g, Flask
 from flask import render_template
 from flask import request
+
+import psycopg2
         
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     @app.route('/list')
-    def hello():
-        cur = get_db().cursor()
-        entryList = []
-        max = 10
-        count = 0
-        for entry in query_db('select * from Sheet1 where Journal = "VIRTUAL REALITY" '):
-            count = count + 1
-            entryList.append(entry)
-            
-        return render_template("index.html", list=entryList)
+    def books():
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM books;')
+        books = cur.fetchall()
+        cur.close()
+        conn.close()
+        print(books)
+        return render_template("books.html", books=books)
     
     @app.route('/')
     def my_form():
@@ -38,7 +39,7 @@ def create_app(test_config=None):
     
     
 
-DATABASE = "C:\\Users\\Mister Sandman\\Desktop\\Uni\\DBS\\u10_Kern_Nguyen_Heupel\\Data\\Merged.db" 
+DATABASE = "C:\\Users\\Mister Sandman\\Desktop\\Uni\\DBS\\u10_Kern_Nguyen_Heupel\\Merged.db" 
 
 def query_db(query, args=(), one=False):
     cur = get_db().execute(query, args)
@@ -47,10 +48,13 @@ def query_db(query, args=(), one=False):
     return (rv[0] if rv else None) if one else rv
 
 def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
+    conn = psycopg2.connect(
+        host="localhost",
+        database="flask_db",
+        user='postgres',
+        password='13071996')
+
+    return conn
 
 
 def close_connection(exception):
@@ -59,4 +63,4 @@ def close_connection(exception):
         db.close()
         
 app = create_app()
-app.run(debug=False)
+app.run(debug=True)

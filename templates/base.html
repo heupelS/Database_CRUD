@@ -1,19 +1,33 @@
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
+    <style>
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
 
-    <title>{% block title %} {% endblock %}</title>
-  </head>
-  <body>
-    <h2>Web app</h2>
-    <div class="container">
+        .book {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+        .review {
+                margin-left: 50px;
+                font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <hr>
+    <div class="content">
         {% block content %} {% endblock %}
     </div>
-
-  </body>
+</body>
 </html>
