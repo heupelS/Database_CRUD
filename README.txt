@@ -1,4 +1,4 @@
-direct to POSTGRESQL path C:\Program Files\PostgreSQL\14\bin> 
+direct to POSTGRESQL path C:\Program Files\PostgreSQL\14\bin
 
 1.
 
