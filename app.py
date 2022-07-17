@@ -25,8 +25,7 @@ def create_figure(data):
     
     fig = Figure()    
     axis = fig.add_subplot(1, 1, 1)
-    axis.set_xlabel("x-axis")
-    axis.set_ylabel("y-axis")
+    axis.set_ylabel("Article count")
     axis.grid()
     
     data.groupby('year').size().plot(kind = 'bar',ax=axis)
