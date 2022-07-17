@@ -7,6 +7,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
   
+
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 </head>
@@ -15,7 +16,7 @@
       <a class="navbar-brand" href="/">Datenbanken Projekt 2022</a>
     </nav>
   
-    <div class="container pt-4">
+    <div class="container-fluid pt-2">
       {% block body %}
       {% endblock %}
     </div>
@@ -34,11 +35,12 @@ if(btnDelete) {
 }
   
 $(document).ready(function() {
-    $('#example').DataTable({     
-      "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
-        "iDisplayLength": 3
-       } 
-    );
+  let dataTable = $('#table').DataTable({     
+                    "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+                      "iDisplayLength": 3
+                    } 
+                  );
+  window.dataTable = dataTable || null;
 } );
   
 </script>
