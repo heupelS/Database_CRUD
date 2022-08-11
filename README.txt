@@ -26,4 +26,6 @@ insert path where merged.csv is stored
 4.
 start webapp with:
 
+(reminder for simeon: conda activate database)
+
 python app.py
